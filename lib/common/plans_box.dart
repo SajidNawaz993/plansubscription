@@ -1,0 +1,219 @@
+import 'package:flutter/material.dart';
+import 'package:plansubscription/common/vertical_space.dart';
+import '../core/config/colors.dart';
+import '../features/data/plans_List_model.dart';
+import 'gradient_text.dart';
+import 'horizontal_space.dart';
+
+class PlansIconBox extends StatelessWidget {
+  const PlansIconBox({
+    super.key,
+    required this.plans,
+    required this.onTap,
+    required this.backgroundColor,
+    required this.isSelected,
+  });
+
+  final Plans plans;
+  final VoidCallback onTap;
+  final Color backgroundColor;
+  final bool isSelected;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        margin: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            border: Border.all(
+              color: isSelected ? AppColors.kSecondaryColor:Colors.transparent,
+              width: 4,
+            ),
+            boxShadow:  [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.2),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: const Offset(0, 3), // changes position of shadow
+              ),
+            ]
+        ),
+        child: Stack(
+          alignment: Alignment.topCenter,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Flexible(child: Text(
+                      plans.product?.title ?? "",
+                      style: TextStyle(
+                          fontFamily: 'LondrinaSolid',
+                          fontWeight: FontWeight.w900,
+                          fontSize: 24
+                      ),
+                    ),),
+                    ((plans.product?.isPro ?? false) && !(plans.product?.isPopular ?? false)) ? Container(
+                        padding: EdgeInsets.all(2),
+                        margin: EdgeInsets.all(5),
+                        width: 30,
+                        height: 30,
+                        decoration: new BoxDecoration(
+                          color: Color(0xFFFECEB7),
+                          shape: BoxShape.circle,
+                        ),
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/star_pro.png"),
+                      ),
+                    ): Container(),
+                    HorizontalSpace(10),
+                    Row(
+                      children: [
+                        GradientText(
+                          "${plans.product?.price ?? 0}",
+                          style: TextStyle(
+                            fontFamily: 'LondrinaSolid',
+                            fontWeight: FontWeight.w900,
+                            fontSize: 24,
+                          ),
+                          gradient: LinearGradient(colors: [
+                            Color(0xFFFF9662), Color(0xFFFF5400)
+                          ]),
+                        ),
+                        HorizontalSpace(5),
+                        Text(
+                          "/month",
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+                VerticalSpace(10),
+                Text(
+                  plans.product?.description ?? "",
+                  style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14
+                  ),
+                ),
+                VerticalSpace(10),
+                Padding(padding: EdgeInsets.only(right: 30),
+                child: Wrap(
+                  children: [
+                    for(int index = 0; index<(plans.product?.benefits?.length ?? 0);index++)...[
+                      Stack(
+                        children: [
+                          Container(
+                              margin: EdgeInsets.only(top: 6),
+                              width: 7,
+                              height: 7,
+                              decoration: new BoxDecoration(
+                                gradient: LinearGradient(
+                                  begin: Alignment.topRight,
+                                  end: Alignment.bottomLeft,
+                                  colors: [
+                                    Color(0xFFFF9662), Color(0xFFFF5400)
+                                  ],
+                                ),
+                                shape: BoxShape.circle,
+                              )),
+                          Padding(padding: EdgeInsets.only(left: 12,right: 20),
+                          child: Text(
+                            plans.product!.benefits![index],
+                            style: TextStyle(
+                                fontFamily: 'LondrinaSolid',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14
+                            ),
+                          ),)
+                        ],
+                      )
+                    ],
+                  ],
+                ),),
+                VerticalSpace(10),
+              ],
+            ),
+            ((plans.product?.isPro ?? false) && !(plans.product?.isPopular ?? false)) ?
+            Positioned(
+                bottom: 0,
+                right:0,
+                child: Transform.translate(
+                  offset: const Offset(30, 30),
+                  child: Image(
+                    width: 70,
+                    height: 70,
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/pro_bg.png"),
+                  ),
+                )
+            ):Container(),
+            ((plans.product?.isPro ?? false) && !(plans.product?.isPopular ?? false)) ?
+            Positioned(
+                bottom: 0,
+                right:0,
+                child: Transform.translate(offset: const Offset(8, 5),
+                  child: RotationTransition(
+                    turns: new AlwaysStoppedAnimation(310 / 360),
+                    child: new Text(
+                      "Pro",
+                      style: TextStyle(
+                        fontFamily: 'LondrinaSolid',
+                        fontWeight: FontWeight.w900,
+                        color: AppColors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),)
+            ):Container(),
+            ((plans.product?.isPro ?? false) && (plans.product?.isPopular ?? false)) ?
+            Positioned(
+                bottom: 0,
+                right:0,
+                child: Transform.translate(
+                  offset: const Offset(30, 30),
+                  child: Image(
+                    width: 70,
+                    height: 70,
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/popular_bg.png"),
+                  ),
+                )
+            ):Container(),
+            ((plans.product?.isPro ?? false) && (plans.product?.isPopular ?? false)) ?
+            Positioned(
+                bottom: 0,
+                right:0,
+                child: Transform.translate(offset: const Offset(15, 5),
+                  child: RotationTransition(
+                    turns: new AlwaysStoppedAnimation(310 / 360),
+                    child: new Text(
+                      "Popular",
+                      style: TextStyle(
+                        fontFamily: 'LondrinaSolid',
+                        fontWeight: FontWeight.w900,
+                        color: AppColors.white,
+                        fontSize: 12,
+                      ),
+                    ),
+                  ),)
+            ):Container(),
+          ],
+        ),
+      ),
+    );
+  }
+}
