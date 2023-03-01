@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:plansubscription/common/vertical_space.dart';
 import '../core/config/colors.dart';
 import '../features/data/plans_List_model.dart';
@@ -62,7 +63,7 @@ class PlansIconBox extends StatelessWidget {
                     ),),
                     ((plans.product?.isPro ?? false) && !(plans.product?.isPopular ?? false)) ? Container(
                         padding: EdgeInsets.all(2),
-                        margin: EdgeInsets.all(5),
+                        margin: EdgeInsets.only(left: 5,right: 5),
                         width: 30,
                         height: 30,
                         decoration: new BoxDecoration(
@@ -78,7 +79,9 @@ class PlansIconBox extends StatelessWidget {
                     Row(
                       children: [
                         GradientText(
-                          "${plans.product?.price ?? 0}",
+                          "${NumberFormat.simpleCurrency(
+                            name: plans.product?.currencyCode ?? "", //currencyCode
+                          ).format(plans.product?.price ?? 0)}",
                           style: TextStyle(
                             fontFamily: 'LondrinaSolid',
                             fontWeight: FontWeight.w900,

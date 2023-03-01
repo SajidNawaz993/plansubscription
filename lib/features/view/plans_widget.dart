@@ -41,6 +41,13 @@ class _PlansViewState extends State<PlansWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
+            decoration: BoxDecoration(
+              gradient:
+              LinearGradient(
+                  begin: Alignment(-1.0, -1),
+                  end: Alignment(-1.0, 1),
+                  colors: [Color(0xFFEEFAFC), Color(0xFFEFF5FB),Color(0xFFF0F1FA), Color(0xFFF8EBFF)]),
+            ),
           child: BlocListener<PlansBloc, PlansState>(
               listener: (context, state) async {
                  if (state is PlansLoading) {
@@ -65,13 +72,6 @@ class _PlansViewState extends State<PlansWidget> {
             padding: EdgeInsets.all(15),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              gradient:
-              LinearGradient(
-                  begin: Alignment(-1.0, -1),
-                  end: Alignment(-1.0, 1),
-                  colors: [Color(0xFFEEFAFC), Color(0xFFEFF5FB),Color(0xFFF0F1FA), Color(0xFFF8EBFF)]),
-            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
@@ -125,27 +125,30 @@ class _PlansViewState extends State<PlansWidget> {
                 )),
                 const VerticalSpace(10),
                 Padding(padding: EdgeInsets.only(left: 30,right: 30,),
-                child:Text(
-                  "Don't forget to add your subscription terms and conditions. Read more about this here:",
-                  style: TextStyle(
-                    fontFamily: 'Inter',
-                    fontWeight: FontWeight.w500,
-                    fontSize: 12,
-                  ),
-                  textAlign: TextAlign.center,
-                ),),
-                Padding(padding: EdgeInsets.only(left: 30,right: 30,),
                   child:InkWell(
-                      child: Text(
-                        "https://www.google.com",
-                        style: TextStyle(
-                          color: AppColors.linktextBlacColor,
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 12,
-                          decoration: TextDecoration.underline,
-                        ),
-                        textAlign: TextAlign.center,
+                      child: Column(
+                        children: [
+                          Text(
+                            "Don't forget to add your subscription terms and conditions. Read more about this here:",
+                            style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 12,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            "https://www.google.com",
+                            style: TextStyle(
+                              color: AppColors.linktextBlacColor,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12,
+                              decoration: TextDecoration.underline,
+                            ),
+                            textAlign: TextAlign.center,
+                          )
+                        ],
                       ),
                       onTap: () => launch('http://google.com/')
                   ),),
