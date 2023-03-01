@@ -50,6 +50,7 @@ class PlansIconBox extends StatelessWidget {
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Flexible(child: Text(
                       plans.product?.title ?? "",
@@ -85,7 +86,10 @@ class PlansIconBox extends StatelessWidget {
                           ),
                           gradient: LinearGradient(colors: [
                             Color(0xFFFF9662), Color(0xFFFF5400)
-                          ]),
+                          ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
                         ),
                         HorizontalSpace(5),
                         Text(
@@ -111,39 +115,43 @@ class PlansIconBox extends StatelessWidget {
                 ),
                 VerticalSpace(10),
                 Padding(padding: EdgeInsets.only(right: 30),
-                child: Wrap(
-                  children: [
-                    for(int index = 0; index<(plans.product?.benefits?.length ?? 0);index++)...[
-                      Stack(
-                        children: [
-                          Container(
-                              margin: EdgeInsets.only(top: 6),
-                              width: 7,
-                              height: 7,
-                              decoration: new BoxDecoration(
-                                gradient: LinearGradient(
-                                  begin: Alignment.topRight,
-                                  end: Alignment.bottomLeft,
-                                  colors: [
-                                    Color(0xFFFF9662), Color(0xFFFF5400)
-                                  ],
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for(int index = 0; index<(plans.product?.benefits?.length ?? 0);index++)...[
+                        Stack(
+                          children: [
+                            Container(
+                                margin: EdgeInsets.only(top: 6),
+                                width: 7,
+                                height: 7,
+                                decoration: new BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Color(0xFFFF9662), Color(0xFFFF5400)
+                                    ],
+                                  ),
+                                  shape: BoxShape.circle,
+                                )),
+                            Padding(padding: EdgeInsets.only(left: 12,right: 20),
+                              child: Text(
+                                plans.product!.benefits![index],
+                                style: TextStyle(
+                                    fontFamily: 'LondrinaSolid',
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 14
                                 ),
-                                shape: BoxShape.circle,
-                              )),
-                          Padding(padding: EdgeInsets.only(left: 12,right: 20),
-                          child: Text(
-                            plans.product!.benefits![index],
-                            style: TextStyle(
-                                fontFamily: 'LondrinaSolid',
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14
-                            ),
-                          ),)
-                        ],
-                      )
+                              ),)
+                          ],
+                        )
+                      ],
                     ],
-                  ],
-                ),),
+                  ),),
+                ),
                 VerticalSpace(10),
               ],
             ),
@@ -197,7 +205,7 @@ class PlansIconBox extends StatelessWidget {
             Positioned(
                 bottom: 0,
                 right:0,
-                child: Transform.translate(offset: const Offset(15, 5),
+                child: Transform.translate(offset: const Offset(19.5, 3),
                   child: RotationTransition(
                     turns: new AlwaysStoppedAnimation(310 / 360),
                     child: new Text(
@@ -217,3 +225,4 @@ class PlansIconBox extends StatelessWidget {
     );
   }
 }
+//Wrap widget for fill horizontal then vertical

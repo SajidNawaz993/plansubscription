@@ -1,5 +1,25 @@
 import 'package:equatable/equatable.dart';
 
+const String _disclamer = 'disclamer';
+const String _plans = 'plans';
+
+const String _identifier = 'identifier';
+const String _packageType = 'packageType';
+const String _product = 'product';
+const String _offeringIdentifier = 'offeringIdentifier';
+
+const String _description = 'description';
+const String _title = 'title';
+const String _price = 'price';
+const String _priceString = 'priceString';
+const String _currencyCode = 'currencyCode';
+const String _introPrice = 'introPrice';
+const String _discounts = 'discounts';
+const String _isPopular = 'isPopular';
+const String _isPro = 'isPro';
+const String _subscriptionPeriod = 'subscriptionPeriod';
+const String _benefits = 'benefits';
+
 class PlansListModel extends Equatable{
   String? disclamer;
   List<Plans>? plans;
@@ -7,10 +27,10 @@ class PlansListModel extends Equatable{
   PlansListModel({this.disclamer, this.plans});
 
   PlansListModel.fromJson(Map<String, dynamic> json) {
-    disclamer = json['disclamer'];
-    if (json['plans'] != null) {
+    disclamer = json[_disclamer];
+    if (json[_plans] != null) {
       plans = <Plans>[];
-      json['plans'].forEach((v) {
+      json[_plans].forEach((v) {
         plans!.add(new Plans.fromJson(v));
       });
     }
@@ -18,9 +38,9 @@ class PlansListModel extends Equatable{
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['disclamer'] = this.disclamer;
+    data[_disclamer] = this.disclamer;
     if (this.plans != null) {
-      data['plans'] = this.plans!.map((v) => v.toJson()).toList();
+      data[_plans] = this.plans!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -43,21 +63,21 @@ class Plans {
         this.offeringIdentifier});
 
   Plans.fromJson(Map<String, dynamic> json) {
-    identifier = json['identifier'];
-    packageType = json['packageType'];
+    identifier = json[_identifier];
+    packageType = json[_packageType];
     product =
-    json['product'] != null ? new Product.fromJson(json['product']) : null;
-    offeringIdentifier = json['offeringIdentifier'];
+    json[_product] != null ? new Product.fromJson(json[_product]) : null;
+    offeringIdentifier = json[_offeringIdentifier];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['identifier'] = this.identifier;
-    data['packageType'] = this.packageType;
+    data[_identifier] = this.identifier;
+    data[_packageType] = this.packageType;
     if (this.product != null) {
-      data['product'] = this.product!.toJson();
+      data[_product] = this.product!.toJson();
     }
-    data['offeringIdentifier'] = this.offeringIdentifier;
+    data[_offeringIdentifier] = this.offeringIdentifier;
     return data;
   }
 }
@@ -91,34 +111,34 @@ class Product {
         this.benefits});
 
   Product.fromJson(Map<String, dynamic> json) {
-    identifier = json['identifier'];
-    description = json['description'];
-    title = json['title'];
-    price = json['price'];
-    priceString = json['priceString'];
-    currencyCode = json['currencyCode'];
-    introPrice = json['introPrice'];
-    discounts = json['discounts'];
-    isPopular = json['isPopular'];
-    isPro = json['isPro'];
-    subscriptionPeriod = json['subscriptionPeriod'];
-    benefits = json['benefits'].cast<String>();
+    identifier = json[_identifier];
+    description = json[_description];
+    title = json[_title];
+    price = json[_price];
+    priceString = json[_priceString];
+    currencyCode = json[_currencyCode];
+    introPrice = json[_introPrice];
+    discounts = json[_discounts];
+    isPopular = json[_isPopular];
+    isPro = json[_isPro];
+    subscriptionPeriod = json[_subscriptionPeriod];
+    benefits = json[_benefits].cast<String>();
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['identifier'] = this.identifier;
-    data['description'] = this.description;
-    data['title'] = this.title;
-    data['price'] = this.price;
-    data['priceString'] = this.priceString;
-    data['currencyCode'] = this.currencyCode;
-    data['introPrice'] = this.introPrice;
-    data['discounts'] = this.discounts;
-    data['isPopular'] = this.isPopular;
-    data['isPro'] = this.isPro;
-    data['subscriptionPeriod'] = this.subscriptionPeriod;
-    data['benefits'] = this.benefits;
+    data[_identifier] = this.identifier;
+    data[_description] = this.description;
+    data[_title] = this.title;
+    data[_price] = this.price;
+    data[_priceString] = this.priceString;
+    data[_currencyCode] = this.currencyCode;
+    data[_introPrice] = this.introPrice;
+    data[_discounts] = this.discounts;
+    data[_isPopular] = this.isPopular;
+    data[_isPro] = this.isPro;
+    data[_subscriptionPeriod] = this.subscriptionPeriod;
+    data[_benefits] = this.benefits;
     return data;
   }
 }

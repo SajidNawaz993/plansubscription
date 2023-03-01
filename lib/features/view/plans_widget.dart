@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plansubscription/common/horizontal_space.dart';
 import 'package:plansubscription/common/save_cancel_button.dart';
 import 'package:plansubscription/common/vertical_space.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../common/plans_box.dart';
 import '../../common/small_button.dart';
 import '../../core/config/colors.dart';
@@ -39,7 +40,7 @@ class _PlansViewState extends State<PlansWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SingleChildScrollView(
+        body: Container(
           child: BlocListener<PlansBloc, PlansState>(
               listener: (context, state) async {
                  if (state is PlansLoading) {
@@ -123,26 +124,31 @@ class _PlansViewState extends State<PlansWidget> {
                   },
                 )),
                 const VerticalSpace(10),
-                Text(
+                Padding(padding: EdgeInsets.only(left: 30,right: 30,),
+                child:Text(
                   "Don't forget to add your subscription terms and conditions. Read more about this here:",
                   style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w500,
-                      fontSize: 12,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  "https://www.google.com",
-                  style: TextStyle(
-                    color: AppColors.linktextBlacColor,
                     fontFamily: 'Inter',
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w500,
                     fontSize: 12,
-                    decoration: TextDecoration.underline,
                   ),
                   textAlign: TextAlign.center,
-                ),
+                ),),
+                Padding(padding: EdgeInsets.only(left: 30,right: 30,),
+                  child:InkWell(
+                      child: Text(
+                        "https://www.google.com",
+                        style: TextStyle(
+                          color: AppColors.linktextBlacColor,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          decoration: TextDecoration.underline,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      onTap: () => launch('http://google.com/')
+                  ),),
                 const VerticalSpace(10),
                _selectedPlanIndex >= 0 ? Row(
                  mainAxisAlignment: MainAxisAlignment.center,
