@@ -31,7 +31,7 @@ class PlansIconBox extends StatelessWidget {
             color: AppColors.white,
             borderRadius: const BorderRadius.all(Radius.circular(10)),
             border: Border.all(
-              color: isSelected ? AppColors.kSecondaryColor:Colors.transparent,
+              color: isSelected ? AppColors.gradient1Color:Colors.transparent,
               width: 4,
             ),
             boxShadow:  [
@@ -88,7 +88,7 @@ class PlansIconBox extends StatelessWidget {
                             fontSize: 24,
                           ),
                           gradient: LinearGradient(colors: [
-                            Color(0xFFFF9662), Color(0xFFFF5400)
+                            AppColors.gradient1Color, AppColors.gradient2Color
                           ],
                             begin: Alignment.topCenter,
                             end: Alignment.bottomCenter,
@@ -135,7 +135,7 @@ class PlansIconBox extends StatelessWidget {
                                     begin: Alignment.topRight,
                                     end: Alignment.bottomLeft,
                                     colors: [
-                                      Color(0xFFFF9662), Color(0xFFFF5400)
+                                      AppColors.gradient1Color, AppColors.gradient2Color
                                     ],
                                   ),
                                   shape: BoxShape.circle,

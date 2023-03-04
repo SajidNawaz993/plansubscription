@@ -4,33 +4,35 @@ import '../core/config/colors.dart';
 import 'gradient_text.dart';
 
 class SaveCancelButton extends StatelessWidget {
-  const SaveCancelButton({
+   SaveCancelButton({
     super.key,
     required this.title,
     required this.onTap,
     required this.isSelected,
+     this.width,
   });
 
   final String title;
   final VoidCallback onTap;
   final bool isSelected;
+  double? width;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: switchbuttonHeight,
-      width: MediaQuery.of(context).size.width/2 - 40,
+      width: width != null ? width:MediaQuery.of(context).size.width/2 - 40,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.0),
           border: Border.all(
-            color: isSelected ? Colors.transparent:AppColors.kSecondaryColor,
+            color: isSelected ? Colors.transparent:AppColors.gradient1Color,
             width: 1,
           ),
           gradient: LinearGradient(
             begin: Alignment(-0.95, 0.0),
             end: Alignment(1.0, 0.0),
-            colors: isSelected ?  [Color(0xFFFF9662), Color(0xFFFF5400)] : [Colors.transparent,Colors.transparent],
+            colors: isSelected ?  [AppColors.gradient1Color, AppColors.gradient2Color] : [Colors.transparent,Colors.transparent],
             stops: [0.0, 1.0],
           ),
         ),
@@ -56,7 +58,7 @@ class SaveCancelButton extends StatelessWidget {
               fontSize: 16,
             ),
             gradient: LinearGradient(colors: [
-              Color(0xFFFF9662), Color(0xFFFF5400)
+              AppColors.gradient1Color, AppColors.gradient2Color
             ]),
           ),
         ),

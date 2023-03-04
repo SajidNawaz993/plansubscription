@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plansubscription/common/horizontal_space.dart';
 import 'package:plansubscription/common/save_cancel_button.dart';
 import 'package:plansubscription/common/vertical_space.dart';
+import 'package:plansubscription/features/plan_detail/plan_details_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../common/plans_box.dart';
 import '../../common/small_button.dart';
@@ -161,7 +162,7 @@ class _PlansViewState extends State<PlansWidget> {
                      isSelected: false,
                      onTap: () {
                        setState(() {
-                         _selectedWidgetName = "Annualy";
+                         _selectedPlanIndex = -1;
                        });
                      },
                    ),
@@ -170,9 +171,11 @@ class _PlansViewState extends State<PlansWidget> {
                      title: "Select",
                      isSelected: true,
                      onTap: () {
-                       setState(() {
-                         _selectedWidgetName = "Monthly";
-                       });
+                       if(_selectedPlanIndex != -1)
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) =>  PlanDetailsWidget(plans: plansListModel?.plans![_selectedPlanIndex],)),
+                       );
                      },
                    ),
                  ],
