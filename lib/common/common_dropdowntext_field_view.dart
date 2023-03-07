@@ -4,31 +4,27 @@ import 'package:plansubscription/common/vertical_space.dart';
 import '../core/config/app_constants.dart';
 import '../core/config/colors.dart';
 
-class CommonTextFieldView extends StatelessWidget {
+class CommonDropdownButtonFormFieldView extends StatelessWidget {
   final String? labelText;
   final String hintText;
   final String? errorText;
   final bool isAllowTopTitleView;
   final EdgeInsetsGeometry padding;
-  final Function(String)? onChanged;
   final Icon? suffixIcon;
   final Icon? prefixIcon;
-  final TextInputType keyboardType;
-  final TextEditingController controller;
   final double textFieldBoxHeight;
+  final Function(String?) onChanged;
 
-  const CommonTextFieldView({
+  const CommonDropdownButtonFormFieldView({
     Key? key,
     this.labelText,
     this.hintText = '',
     this.padding = const EdgeInsets.only(),
-    this.onChanged,
+    required this.onChanged,
     this.suffixIcon,
     this.prefixIcon,
-    this.keyboardType = TextInputType.text,
     this.isAllowTopTitleView = true,
     this.errorText,
-    required this.controller,
     this.textFieldBoxHeight = 50,
   }) : super(key: key);
 
@@ -49,20 +45,15 @@ class CommonTextFieldView extends StatelessWidget {
             height: textFieldBoxHeight,
             decoration: BoxDecoration(
               color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(25),
             ),
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
-                child: TextField(
-                  controller: controller,
-                  maxLines: 1,
+                child: DropdownButtonFormField(
+                  iconSize: 0.0,
                   onChanged: onChanged,
                   style: const TextStyle(color: AppColors.plantextBlacColor),
-                  cursorColor: AppColors.kPrimaryColor,
-                  onEditingComplete: () {
-                    FocusScope.of(context).nextFocus();
-                  },
                   decoration: InputDecoration(
                     hintText: hintText,
                     //contentPadding: const EdgeInsets.only(left: 10),
@@ -73,7 +64,13 @@ class CommonTextFieldView extends StatelessWidget {
                     hintStyle: const TextStyle(color: Colors.grey),
                     border: InputBorder.none,
                   ),
-                  keyboardType: keyboardType,
+                  items: <String>['State 1', 'State 2', 'State 3', 'State 4']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value, style: const TextStyle(color: AppColors.plantextBlacColor,),),
+                  );
+                }).toList(),
                 ),
               ),
             ),

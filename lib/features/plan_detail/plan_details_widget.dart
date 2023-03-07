@@ -1,8 +1,11 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:plansubscription/common/gradient_text.dart';
 import 'package:plansubscription/common/plans_details_box.dart';
 import 'package:plansubscription/common/save_cancel_button.dart';
 import 'package:plansubscription/common/vertical_space.dart';
+import '../../common/alert_view.dart';
+import '../../common/common_dropdowntext_field_view.dart';
 import '../../common/common_text_field_view.dart';
 import '../../common/gradient_icon.dart';
 import '../../core/config/app_constants.dart';
@@ -39,6 +42,7 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
   late TextEditingController _expDateController;
   String _cvvError = '';
   late TextEditingController _cvvController;
+  String statedropdownValue = '';
 
   @override
   void initState() {
@@ -142,6 +146,18 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                           children: <TextSpan>[
                             TextSpan(
                                 text: 'Learn More ',
+                                recognizer: new TapGestureRecognizer()..onTap = () {
+                                  var dialog = CustomAlertDialog(
+                                      title: "How we use your address",
+                                      message: "Why do you need my address?",
+                                      secmessage: "\nWe need this information to comply with applicable laws in the U.S, like determining the amount of sales tax that we collect based on the guidelines in your state.To learn more about how Spotify processes your personal data, please see Spotify's",
+                                      onPostivePressed: () {},
+                                      positiveBtnText: 'Ok',
+                                      );
+                                  showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) => dialog);
+                                },
                                 style: TextStyle(
                                     decoration: TextDecoration.underline,
                                     fontFamily: 'Inter',
@@ -164,7 +180,13 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                         errorText: _streetError,
                         hintText: "Street",
                         keyboardType: TextInputType.text,
-                        onChanged: (String txt) {},
+                        onChanged: (String txt) {
+                          if(txt.isNotEmpty && _streetError.isNotEmpty) {
+                            setState(() {
+                              _streetError = "";
+                            });
+                          }
+                        },
                       ),
                       const VerticalSpace(smallSpace),
                       CommonTextFieldView(
@@ -172,19 +194,30 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                         errorText: _townCityError,
                         hintText: "Town/City",
                         keyboardType: TextInputType.text,
-                        onChanged: (String txt) {},
+                        onChanged: (String txt) {
+                          if(txt.isNotEmpty && _townCityError.isNotEmpty) {
+                            setState(() {
+                              _townCityError = "";
+                            });
+                          }
+                        },
                       ),
                       const VerticalSpace(smallSpace),
-                      CommonTextFieldView(
-                        controller: _stateController,
+                      CommonDropdownButtonFormFieldView(
                         errorText: _stateNameError,
                         suffixIcon: const Icon(
                           Icons.keyboard_arrow_down,
                           color: AppColors.gradient2Color,
                         ),
                         hintText: "State",
-                        keyboardType: TextInputType.text,
-                        onChanged: (String txt) {},
+                        onChanged: (String? txt) {
+                          statedropdownValue = txt ?? "";
+                          if(statedropdownValue.isNotEmpty && _stateNameError.isNotEmpty) {
+                            setState(() {
+                              _stateNameError = "";
+                            });
+                          }
+                        },
                       ),
                       const VerticalSpace(smallSpace),
                       CommonTextFieldView(
@@ -192,7 +225,13 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                         errorText: _zipCodeNameError,
                         hintText: "ZIP code",
                         keyboardType: TextInputType.text,
-                        onChanged: (String txt) {},
+                        onChanged: (String txt) {
+                          if(txt.isNotEmpty && _zipCodeNameError.isNotEmpty) {
+                            setState(() {
+                              _zipCodeNameError = "";
+                            });
+                          }
+                        },
                       ),
                       const VerticalSpace(mediumSpace),
                       Text(
@@ -213,7 +252,13 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                         ),
                         hintText: "",
                         keyboardType: TextInputType.text,
-                        onChanged: (String txt) {},
+                        onChanged: (String txt) {
+                          if(txt.isNotEmpty && _cardNbrError.isNotEmpty) {
+                            setState(() {
+                              _cardNbrError = "";
+                            });
+                          }
+                        },
                       ),
                       const VerticalSpace(smallSpace),
                       Row(
@@ -227,7 +272,13 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                               errorText: _expDateError,
                               hintText: "DD.MM.YYYY",
                               keyboardType: TextInputType.text,
-                              onChanged: (String txt) {},
+                              onChanged: (String txt) {
+                                if(txt.isNotEmpty && _expDateError.isNotEmpty) {
+                                  setState(() {
+                                    _expDateError = "";
+                                  });
+                                }
+                              },
                             ),),
                           Container(
                             width: MediaQuery.of(context).size.width/2 - 25,
@@ -237,7 +288,13 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                               errorText: _cvvError,
                               hintText: "000",
                               keyboardType: TextInputType.text,
-                              onChanged: (String txt) {},
+                              onChanged: (String txt) {
+                                if(txt.isNotEmpty && _cvvError.isNotEmpty) {
+                                  setState(() {
+                                    _cvvError = "";
+                                  });
+                                }
+                              },
                             ),),
                         ],
                       ),
@@ -246,7 +303,42 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                         title: "Sign Up",
                         isSelected: true,
                         onTap: () {
-
+                          if(_streetController.text.toString().isEmpty)
+                          {
+                            setState(() {
+                              _streetError = "Street is required.";
+                            });
+                          } else if(_townCityController.text.toString().isEmpty)
+                          {
+                            setState(() {
+                              _townCityError = "Town/City is required.";
+                            });
+                          } else if(statedropdownValue.isEmpty)
+                          {
+                            setState(() {
+                              _stateNameError = "State is required.";
+                            });
+                          } else if(_zipCodeController.text.toString().isEmpty)
+                          {
+                            setState(() {
+                              _zipCodeNameError = "Zip code is required.";
+                            });
+                          } else if(_cardNbrController.text.toString().isEmpty)
+                          {
+                            setState(() {
+                              _cardNbrError = "Card number is required.";
+                            });
+                          } else if(_expDateController.text.toString().isEmpty)
+                          {
+                            setState(() {
+                              _expDateError = "Exp date is required.";
+                            });
+                          } else if(_cvvController.text.toString().isEmpty)
+                          {
+                            setState(() {
+                              _cvvError = "CVV is required.";
+                            });
+                          }
                         },
                         width: MediaQuery.of(context).size.width,
                       ),
