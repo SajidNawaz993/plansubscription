@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plansubscription/features/plan_detail/bloc/plans_details_bloc.dart';
 import 'package:plansubscription/features/view/plans_widget.dart';
 
 import 'core/config/colors.dart';
@@ -35,6 +36,9 @@ class MyApp extends StatelessWidget {
             create: (context) => PlansBloc(
               repository: context.read<PlansRepository>(),
             ),
+          ),
+          BlocProvider<PlanDetailsBloc>(
+            create: (context) => PlanDetailsBloc(),
           ),
         ],
         child: MaterialApp(

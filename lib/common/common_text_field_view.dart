@@ -54,26 +54,35 @@ class CommonTextFieldView extends StatelessWidget {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
-                child: TextField(
-                  controller: controller,
-                  maxLines: 1,
-                  onChanged: onChanged,
-                  style: const TextStyle(color: AppColors.plantextBlacColor),
-                  cursorColor: AppColors.kPrimaryColor,
-                  onEditingComplete: () {
-                    FocusScope.of(context).nextFocus();
-                  },
-                  decoration: InputDecoration(
-                    hintText: hintText,
-                    //contentPadding: const EdgeInsets.only(left: 10),
-                    suffixIcon: suffixIcon,
-                    prefixIcon: prefixIcon,
-                    labelText: null,
-                    labelStyle: const TextStyle(color: Colors.grey),
-                    hintStyle: const TextStyle(color: Colors.grey),
-                    border: InputBorder.none,
-                  ),
-                  keyboardType: keyboardType,
+                child: Theme(
+                    data:Theme.of(context).copyWith(
+                      colorScheme: ThemeData().colorScheme.copyWith(
+                        primary:Colors.grey,
+                      ),
+                    ),
+                    child:TextField(
+                      controller: controller,
+                      maxLines: 1,
+                      onChanged: onChanged,
+                      style: const TextStyle(color: AppColors.plantextBlacColor,fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                          fontSize: 19),
+                      cursorColor: AppColors.kPrimaryColor,
+                      onEditingComplete: () {
+                        FocusScope.of(context).nextFocus();
+                      },
+                      decoration: InputDecoration(
+                        hintText: hintText,
+                        //contentPadding: const EdgeInsets.only(left: 10),
+                        suffixIcon: suffixIcon,
+                        prefixIcon: prefixIcon,
+                        labelText: null,
+                        labelStyle: const TextStyle(color: Colors.grey),
+                        hintStyle: const TextStyle(color: Colors.grey),
+                        border: InputBorder.none,
+                      ),
+                      keyboardType: keyboardType,
+                    )
                 ),
               ),
             ),

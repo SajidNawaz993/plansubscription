@@ -6,6 +6,7 @@ import '../core/config/colors.dart';
 
 class CommonDropdownButtonFormFieldView extends StatelessWidget {
   final String? labelText;
+  final String? valueText;
   final String hintText;
   final String? errorText;
   final bool isAllowTopTitleView;
@@ -18,6 +19,7 @@ class CommonDropdownButtonFormFieldView extends StatelessWidget {
   const CommonDropdownButtonFormFieldView({
     Key? key,
     this.labelText,
+    this.valueText,
     this.hintText = '',
     this.padding = const EdgeInsets.only(),
     required this.onChanged,
@@ -51,9 +53,12 @@ class CommonDropdownButtonFormFieldView extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(left: 8.0),
                 child: DropdownButtonFormField(
+                  value: valueText!.isNotEmpty ? valueText:null,
                   iconSize: 0.0,
                   onChanged: onChanged,
-                  style: const TextStyle(color: AppColors.plantextBlacColor),
+                  style: const TextStyle(color: AppColors.plantextBlacColor,fontFamily: 'Inter',
+                  fontWeight: FontWeight.w400,
+                      fontSize: 19),
                   decoration: InputDecoration(
                     hintText: hintText,
                     //contentPadding: const EdgeInsets.only(left: 10),
@@ -68,7 +73,9 @@ class CommonDropdownButtonFormFieldView extends StatelessWidget {
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value, style: const TextStyle(color: AppColors.plantextBlacColor,),),
+                    child: Text(value, style: const TextStyle(color: AppColors.plantextBlacColor,fontFamily: 'Inter',
+                    fontWeight: FontWeight.w400,
+                        fontSize: 19),),
                   );
                 }).toList(),
                 ),

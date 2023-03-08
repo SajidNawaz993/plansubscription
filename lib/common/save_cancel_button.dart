@@ -20,7 +20,7 @@ class SaveCancelButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: switchbuttonHeight,
+      height: buttonHeight,
       width: width != null ? width:MediaQuery.of(context).size.width/2 - 40,
       child: Container(
         decoration: BoxDecoration(

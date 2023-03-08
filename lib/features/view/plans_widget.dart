@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plansubscription/common/horizontal_space.dart';
 import 'package:plansubscription/common/save_cancel_button.dart';
 import 'package:plansubscription/common/vertical_space.dart';
-import 'package:plansubscription/features/plan_detail/plan_details_widget.dart';
+import 'package:plansubscription/features/plan_detail/view/plan_details_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../common/plans_box.dart';
 import '../../common/small_button.dart';
