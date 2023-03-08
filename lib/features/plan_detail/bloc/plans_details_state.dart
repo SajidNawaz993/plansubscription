@@ -17,4 +17,4 @@ class PlanDetailsState extends Equatable {
   List<Object> get props => [street,townCity,state,zipCode,cardNbr,expDate,cvv];
 }
 
-class CounterValue extends PlanDetailsState {}
+class PlanDetailsValue extends PlanDetailsState {}
