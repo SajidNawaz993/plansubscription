@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:plansubscription/common/vertical_space.dart';
 import '../core/config/colors.dart';
-import '../features/data/plans_List_model.dart';
+import '../features/plans/data/plans_List_model.dart';
 import 'gradient_text.dart';
 import 'horizontal_space.dart';
 
@@ -62,6 +62,50 @@ class PlansDetailsIconBox extends StatelessWidget {
                           fontSize: 24
                       ),
                     ),),
+                    ((plans.product?.isPro ?? false) && !(plans.product?.isPopular ?? false)) ? Container(
+                      padding: EdgeInsets.all(2),
+                      margin: EdgeInsets.only(left: 5,right: 5),
+                      width: 30,
+                      height: 30,
+                      decoration: new BoxDecoration(
+                        color: Color(0xFFFECEB7),
+                        shape: BoxShape.circle,
+                      ),
+                      child: Image(
+                        fit: BoxFit.cover,
+                        image: AssetImage("assets/images/star_pro.png"),
+                      ),
+                    ): Container(),
+                    HorizontalSpace(10),
+                    Row(
+                      children: [
+                        GradientText(
+                          "${NumberFormat.simpleCurrency(
+                            name: plans.product?.currencyCode ?? "", //currencyCode
+                          ).format(plans.product?.price ?? 0)}",
+                          style: TextStyle(
+                            fontFamily: 'LondrinaSolid',
+                            fontWeight: FontWeight.w900,
+                            fontSize: 24,
+                          ),
+                          gradient: LinearGradient(colors: [
+                            AppColors.gradient1Color, AppColors.gradient2Color
+                          ],
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                          ),
+                        ),
+                        HorizontalSpace(5),
+                        Text(
+                          "/month",
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                              fontSize: 16
+                          ),
+                        )
+                      ],
+                    ),
                   ],
                 ),
                 VerticalSpace(10),

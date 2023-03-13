@@ -5,10 +5,10 @@ import 'package:plansubscription/common/save_cancel_button.dart';
 import 'package:plansubscription/common/vertical_space.dart';
 import 'package:plansubscription/features/plan_detail/view/plan_details_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../../common/plans_box.dart';
-import '../../common/small_button.dart';
-import '../../core/config/colors.dart';
-import '../../core/helper/loading_screen.dart';
+import '../../../common/plans_box.dart';
+import '../../../common/small_button.dart';
+import '../../../core/config/colors.dart';
+import '../../../core/helper/loading_screen.dart';
 import '../bloc/plans_bloc.dart';
 import '../data/plans_List_model.dart';
 
@@ -116,6 +116,7 @@ class _PlansViewState extends State<PlansWidget> {
                       plans: plansListModel!.plans![index],
                       backgroundColor: AppColors.white,
                       isSelected: _selectedPlanIndex == index ? true:false,
+                      isPlanDetail: false,
                       onTap: () {
                         setState(() {
                           _selectedPlanIndex = index;

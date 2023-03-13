@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:plansubscription/features/plan_detail/bloc/plans_details_bloc.dart';
-import 'package:plansubscription/features/view/plans_widget.dart';
-
 import 'core/config/colors.dart';
-import 'features/bloc/plans_bloc.dart';
-import 'features/data/plans_repository.dart';
+import 'features/plans/bloc/plans_bloc.dart';
+import 'features/plans/data/plans_repository.dart';
+import 'features/plans/view/plans_widget.dart';
+import 'features/upgrade_plans/bloc/upgradeplans_bloc.dart';
+import 'features/upgrade_plans/data/upgradeplans_repository.dart';
 
 
 void main() async {
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         RepositoryProvider<PlansRepository>(
           create: ((context) => PlansRepository()),
         ),
+        RepositoryProvider<UpgradePlansRepository>(
+          create: ((context) => UpgradePlansRepository()),
+        ),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -39,6 +43,11 @@ class MyApp extends StatelessWidget {
           ),
           BlocProvider<PlanDetailsBloc>(
             create: (context) => PlanDetailsBloc(),
+          ),
+          BlocProvider<UpgradePlansBloc>(
+            create: (context) => UpgradePlansBloc(
+              repository: context.read<UpgradePlansRepository>(),
+            ),
           ),
         ],
         child: MaterialApp(

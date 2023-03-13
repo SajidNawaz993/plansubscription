@@ -10,8 +10,9 @@ class SaveCancelButton extends StatelessWidget {
     required this.onTap,
     required this.isSelected,
      this.width,
+     this.style
   });
-
+   final TextStyle? style;
   final String title;
   final VoidCallback onTap;
   final bool isSelected;
@@ -24,7 +25,7 @@ class SaveCancelButton extends StatelessWidget {
       width: width != null ? width:MediaQuery.of(context).size.width/2 - 40,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20.0),
+          borderRadius: BorderRadius.circular(25.0),
           border: Border.all(
             color: isSelected ? Colors.transparent:AppColors.gradient1Color,
             width: 1,
@@ -52,7 +53,7 @@ class SaveCancelButton extends StatelessWidget {
             ),
           ):GradientText(
             title,
-            style: TextStyle(
+            style: style != null ? style:TextStyle(
               fontFamily: 'Inter',
               fontWeight: FontWeight.w700,
               fontSize: 16,

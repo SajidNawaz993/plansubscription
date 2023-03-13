@@ -13,7 +13,8 @@ import '../../../common/common_text_field_view.dart';
 import '../../../common/gradient_icon.dart';
 import '../../../core/config/app_constants.dart';
 import '../../../core/config/colors.dart';
-import '../../data/plans_List_model.dart';
+import '../../plans/data/plans_List_model.dart';
+import '../../upgrade_plans/view/upgradeplans_widget.dart';
 import '../bloc/plans_details_event.dart';
 
 //Widget for input
@@ -360,6 +361,11 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                                 setState(() {
                                   _cvvError = "CVV is required.";
                                 });
+                              }else{
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) =>  UpgradePlansWidget(plans: widget.plans,)),
+                                );
                               }
                             },
                             width: MediaQuery.of(context).size.width,
@@ -367,7 +373,6 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                           const VerticalSpace(smallSpace),
                           Center(child: InkWell(
                             onTap: (){
-
                             },
                             child: Text(
                               "Cancel",

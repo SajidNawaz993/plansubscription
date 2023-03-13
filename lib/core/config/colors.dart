@@ -18,6 +18,10 @@ class AppColors {
 
   static const Color tabUnselectTextColor = Color(0xFFDADADA);
 
+  static const Color nonProgressColor = Color(0xFFFECEB7);
+
+  static const Color progressbottomColor = Color(0xFF9B9B9B);
+
   static const Color gradient1Color = Color(0xFFFF9662);
 
   static const Color gradient2Color = Color(0xFFFF5400);

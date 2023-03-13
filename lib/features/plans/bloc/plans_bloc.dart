@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:plansubscription/features/data/plans_List_model.dart';
+import '../data/plans_List_model.dart';
 import '../data/plans_repository.dart';
 
 part 'plans_event.dart';

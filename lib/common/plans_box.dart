@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:plansubscription/common/save_cancel_button.dart';
 import 'package:plansubscription/common/vertical_space.dart';
 import '../core/config/colors.dart';
-import '../features/data/plans_List_model.dart';
+import '../features/plans/data/plans_List_model.dart';
 import 'gradient_text.dart';
 import 'horizontal_space.dart';
 
@@ -13,12 +14,14 @@ class PlansIconBox extends StatelessWidget {
     required this.onTap,
     required this.backgroundColor,
     required this.isSelected,
+    required this.isPlanDetail,
   });
 
   final Plans plans;
   final VoidCallback onTap;
   final Color backgroundColor;
   final bool isSelected;
+  final bool isPlanDetail;
 
   @override
   Widget build(BuildContext context) {
@@ -155,6 +158,22 @@ class PlansIconBox extends StatelessWidget {
                     ],
                   ),),
                 ),
+                if(isPlanDetail)
+                  VerticalSpace(20),
+                if(isPlanDetail)
+                  SaveCancelButton(
+                    title: "Upgrade",
+                    isSelected: true,
+                    onTap: () {
+
+                    },
+                    width: 100,
+                    style: TextStyle(
+                        fontFamily: 'LondrinaSolid',
+                        fontWeight: FontWeight.w400,
+                        fontSize: 14
+                    ),
+                  ),
                 VerticalSpace(10),
               ],
             ),

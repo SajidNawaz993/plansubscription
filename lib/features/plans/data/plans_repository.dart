@@ -1,8 +1,8 @@
 // throw an Exception while looking for the Store Info Data
 
 
-import 'package:plansubscription/features/data/plans_List_model.dart';
-import 'package:plansubscription/features/data/plans_api_service.dart';
+import 'package:plansubscription/features/plans/data/plans_List_model.dart';
+import 'package:plansubscription/features/plans/data/plans_api_service.dart';
 
 class PlansRepositoryException implements Exception {}
 
