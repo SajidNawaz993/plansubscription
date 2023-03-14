@@ -10,6 +10,7 @@ class SaveCancelButton extends StatelessWidget {
     required this.onTap,
     required this.isSelected,
      this.width,
+     this.height,
      this.style
   });
    final TextStyle? style;
@@ -17,15 +18,16 @@ class SaveCancelButton extends StatelessWidget {
   final VoidCallback onTap;
   final bool isSelected;
   double? width;
+  double? height;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: buttonHeight,
+      height: height != null ? height:buttonHeight,
       width: width != null ? width:MediaQuery.of(context).size.width/2 - 40,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.0),
+          borderRadius: BorderRadius.circular(height != null ? height!/2:buttonHeight/2),
           border: Border.all(
             color: isSelected ? Colors.transparent:AppColors.gradient1Color,
             width: 1,

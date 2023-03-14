@@ -179,8 +179,8 @@ class _UpgradePlansViewState extends State<UpgradePlansWidget> {
                               ),
                               Divider(height: 5,color: Colors.transparent,),
                               CircularPercentIndicator(
-                                radius: 60.0,
-                                lineWidth: 13.0,
+                                radius: 44.0,
+                                lineWidth: 8.0,
                                 animation: true,
                                 percent: 4/5,
                                 center: GradientText(
@@ -199,7 +199,7 @@ class _UpgradePlansViewState extends State<UpgradePlansWidget> {
                                   ),
                                 ),
                                 footer: Padding(
-                                  padding: EdgeInsets.only(top: 10),
+                                  padding: EdgeInsets.only(top: 0),
                                   child: Text(
                                     "1 conference left",
                                     style:TextStyle(
@@ -241,8 +241,8 @@ class _UpgradePlansViewState extends State<UpgradePlansWidget> {
                               ),
                               Divider(height: 5,color: Colors.transparent,),
                               CircularPercentIndicator(
-                                radius: 60.0,
-                                lineWidth: 13.0,
+                                radius: 44.0,
+                                lineWidth: 8.0,
                                 animation: true,
                                 percent: 12/15,
                                 center: GradientText(
@@ -261,7 +261,7 @@ class _UpgradePlansViewState extends State<UpgradePlansWidget> {
                                   ),
                                 ),
                                 footer: Padding(
-                                  padding: EdgeInsets.only(top: 10),
+                                  padding: EdgeInsets.only(top: 0),
                                   child: Text(
                                     "3 Sessions left",
                                     style:TextStyle(

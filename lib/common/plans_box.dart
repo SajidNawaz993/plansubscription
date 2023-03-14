@@ -168,6 +168,7 @@ class PlansIconBox extends StatelessWidget {
 
                     },
                     width: 100,
+                    height: 40,
                     style: TextStyle(
                         fontFamily: 'LondrinaSolid',
                         fontWeight: FontWeight.w400,
