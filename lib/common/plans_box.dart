@@ -167,12 +167,13 @@ class PlansIconBox extends StatelessWidget {
                     onTap: () {
 
                     },
-                    width: 100,
+                    width: 80,
                     height: 40,
                     style: TextStyle(
                         fontFamily: 'LondrinaSolid',
                         fontWeight: FontWeight.w400,
-                        fontSize: 14
+                        fontSize: 14,
+                        letterSpacing:0.04
                     ),
                   ),
                 VerticalSpace(10),

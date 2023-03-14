@@ -47,7 +47,7 @@ class SaveCancelButton extends StatelessWidget {
           onPressed: onTap,
           child: isSelected ? Text(
             title,
-            style: TextStyle(
+            style:  style != null ? style:TextStyle(
               fontFamily: 'Inter',
               fontWeight: FontWeight.w700,
               fontSize: 16,

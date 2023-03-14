@@ -53,7 +53,7 @@ class CommonTextFieldView extends StatelessWidget {
             ),
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 14.0),
                 child: Theme(
                     data:Theme.of(context).copyWith(
                       colorScheme: ThemeData().colorScheme.copyWith(
@@ -77,8 +77,10 @@ class CommonTextFieldView extends StatelessWidget {
                         suffixIcon: suffixIcon,
                         prefixIcon: prefixIcon,
                         labelText: null,
-                        labelStyle: const TextStyle(color: Colors.grey),
-                        hintStyle: const TextStyle(color: Colors.grey),
+                        labelStyle: const TextStyle(color: Colors.grey,fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400, fontSize: 19),
+                        hintStyle: const TextStyle(color: Colors.grey,fontFamily: 'Inter',
+                            fontWeight: FontWeight.w400, fontSize: 19),
                         border: InputBorder.none,
                       ),
                       keyboardType: keyboardType,

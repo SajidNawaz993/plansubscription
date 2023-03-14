@@ -51,7 +51,7 @@ class CommonDropdownButtonFormFieldView extends StatelessWidget {
             ),
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
+                padding: const EdgeInsets.only(left: 14.0),
                 child: DropdownButtonFormField(
                   value: valueText!.isNotEmpty ? valueText:null,
                   iconSize: 0.0,
@@ -65,8 +65,10 @@ class CommonDropdownButtonFormFieldView extends StatelessWidget {
                     suffixIcon: suffixIcon,
                     prefixIcon: prefixIcon,
                     labelText: null,
-                    labelStyle: const TextStyle(color: Colors.grey),
-                    hintStyle: const TextStyle(color: Colors.grey),
+                    labelStyle: const TextStyle(color: Colors.grey,fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400, fontSize: 19),
+                    hintStyle: const TextStyle(color: Colors.grey,fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400, fontSize: 19),
                     border: InputBorder.none,
                   ),
                   items: <String>['State 1', 'State 2', 'State 3', 'State 4']

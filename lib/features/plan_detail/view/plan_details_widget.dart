@@ -373,6 +373,10 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                           const VerticalSpace(smallSpace),
                           Center(child: InkWell(
                             onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) =>  UpgradePlansWidget(plans: widget.plans,)),
+                              );
                             },
                             child: Text(
                               "Cancel",
