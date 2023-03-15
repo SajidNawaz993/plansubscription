@@ -99,7 +99,7 @@ class PlansIconBox extends StatelessWidget {
                         ),
                         HorizontalSpace(5),
                         Text(
-                          "/month",
+                          (plans.packageType ?? "") == "MONTHLY" ? "/month":"/annual",
                           style: TextStyle(
                               fontFamily: 'Inter',
                               fontWeight: FontWeight.w400,
