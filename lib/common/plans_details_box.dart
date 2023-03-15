@@ -7,7 +7,7 @@ import 'gradient_text.dart';
 import 'horizontal_space.dart';
 
 class PlansDetailsIconBox extends StatelessWidget {
-  const PlansDetailsIconBox({
+   PlansDetailsIconBox({
     super.key,
     required this.plans,
     required this.onTap,
@@ -20,8 +20,13 @@ class PlansDetailsIconBox extends StatelessWidget {
   final Color backgroundColor;
   final bool isSelected;
 
+  final dateFormat = new DateFormat('MMMM dd,yyyy');
+   var today = DateTime.now();
+
+
   @override
   Widget build(BuildContext context) {
+    var newDate = new DateTime(today.year, today.month + 1, today.day);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -109,25 +114,33 @@ class PlansDetailsIconBox extends StatelessWidget {
                   ],
                 ),
                 VerticalSpace(10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image(
-                      width: 20,
-                      height: 20,
-                      fit: BoxFit.cover,
-                      image: AssetImage("assets/images/tick_green.png"),
-                    ),
-                    HorizontalSpace(5),
-                    Flexible(child: Text(
-                      plans.product?.description ?? "",
-                      style: TextStyle(
-                          fontFamily: 'Inter',
-                          fontWeight: FontWeight.w400,
-                          fontSize: 14
-                      ),
-                    ),)
+                    for(int index = 0; index<(plans.product?.benefits?.length ?? 0);index++)...[
+                      Padding(padding: EdgeInsets.only(top: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image(
+                            width: 20,
+                            height: 20,
+                            fit: BoxFit.cover,
+                            image: AssetImage("assets/images/tick_green.png"),
+                          ),
+                          HorizontalSpace(5),
+                          Flexible(child: Text(
+                            plans.product!.benefits![index],
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w400,
+                                fontSize: 14
+                            ),
+                          ),)
+                        ],
+                      ),)
+                    ],
                   ],
                 ),
                 VerticalSpace(10),
@@ -170,7 +183,7 @@ class PlansDetailsIconBox extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "April 25,2022",
+                        "${dateFormat.format(newDate)}",
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,

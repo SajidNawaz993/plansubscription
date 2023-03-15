@@ -164,61 +164,63 @@ class _UpgradePlansViewState extends State<UpgradePlansWidget> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 10,right: 10),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Conferences",
-                                style: TextStyle(
-                                    color: AppColors.plantextBlacColor,
-                                    fontFamily: 'LondrinaSolid',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14
-                                ),
-                              ),
-                              Divider(height: 5,color: Colors.transparent,),
-                              CircularPercentIndicator(
-                                radius: 44.0,
-                                lineWidth: 8.0,
-                                animation: true,
-                                percent: 4/5,
-                                center: GradientText(
-                                  "4/5",
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(right: 5),
+                            child: Column(
+                              children: [
+                                Text(
+                                  "Conferences",
                                   style: TextStyle(
+                                      color: AppColors.plantextBlacColor,
                                       fontFamily: 'LondrinaSolid',
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 16,
-                                      letterSpacing: 0.4
-                                  ),
-                                  gradient: LinearGradient(colors: [
-                                    AppColors.gradient1Color, AppColors.gradient2Color
-                                  ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
+                                      fontSize: 14
                                   ),
                                 ),
-                                footer: Padding(
-                                  padding: EdgeInsets.only(top: 0),
-                                  child: Text(
-                                    "1 conference left",
-                                    style:TextStyle(
-                                        color: AppColors.progressbottomColor,
-                                        fontFamily: 'Inter',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 10
+                                Divider(height: 5,color: Colors.transparent,),
+                                CircularPercentIndicator(
+                                  radius: 44.0,
+                                  lineWidth: 8.0,
+                                  animation: true,
+                                  percent: 4/5,
+                                  center: GradientText(
+                                    "4/5",
+                                    style: TextStyle(
+                                        fontFamily: 'LondrinaSolid',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16,
+                                        letterSpacing: 0.4
+                                    ),
+                                    gradient: LinearGradient(colors: [
+                                      AppColors.gradient1Color, AppColors.gradient2Color
+                                    ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
                                     ),
                                   ),
-                                ),
-                                linearGradient: LinearGradient(colors: [
-                                  AppColors.gradient1Color,AppColors.gradient2Color
-                                ],
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                backgroundColor: AppColors.nonProgressColor,
-                                //  progressColor: AppColors.nonProgressColor,
-                              )
-                            ],
+                                  footer: Padding(
+                                    padding: EdgeInsets.only(top: 5),
+                                    child: Text(
+                                      "1 conference left",
+                                      style:TextStyle(
+                                          color: AppColors.progressbottomColor,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10
+                                      ),
+                                    ),
+                                  ),
+                                  linearGradient: LinearGradient(colors: [
+                                    AppColors.gradient1Color,AppColors.gradient2Color
+                                  ],
+                                  ),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  backgroundColor: AppColors.nonProgressColor,
+                                  //  progressColor: AppColors.nonProgressColor,
+                                )
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(width: 1,child: Container(
@@ -226,61 +228,65 @@ class _UpgradePlansViewState extends State<UpgradePlansWidget> {
                           width: 1,
                           color: AppColors.tabUnselectTextColor,
                         ),),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10,right: 10),
-                          child: Column(
-                            children: [
-                              Text(
-                                "Sessions",
-                                style: TextStyle(
-                                    color: AppColors.plantextBlacColor,
-                                    fontFamily: 'LondrinaSolid',
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 14
-                                ),
-                              ),
-                              Divider(height: 5,color: Colors.transparent,),
-                              CircularPercentIndicator(
-                                radius: 44.0,
-                                lineWidth: 8.0,
-                                animation: true,
-                                percent: 12/15,
-                                center: GradientText(
-                                  "12/15",
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 5),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Sessions",
                                   style: TextStyle(
+                                      color: AppColors.plantextBlacColor,
                                       fontFamily: 'LondrinaSolid',
                                       fontWeight: FontWeight.w400,
-                                      fontSize: 16,
-                                      letterSpacing: 0.4
-                                  ),
-                                  gradient: LinearGradient(colors: [
-                                    AppColors.gradient1Color, AppColors.gradient2Color
-                                  ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter,
+                                      fontSize: 14
                                   ),
                                 ),
-                                footer: Padding(
-                                  padding: EdgeInsets.only(top: 0),
-                                  child: Text(
-                                    "3 Sessions left",
-                                    style:TextStyle(
-                                        color: AppColors.progressbottomColor,
-                                        fontFamily: 'Inter',
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 10
+                                Divider(height: 5,color: Colors.transparent,),
+                                CircularPercentIndicator(
+                                  radius: 44.0,
+                                  lineWidth: 8.0,
+                                  animation: true,
+                                  percent: 12/15,
+                                  center: GradientText(
+                                    "12/15",
+                                    style: TextStyle(
+                                        fontFamily: 'LondrinaSolid',
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 16,
+                                        letterSpacing: 0.4
+                                    ),
+                                    gradient: LinearGradient(colors: [
+                                      AppColors.gradient1Color, AppColors.gradient2Color
+                                    ],
+                                      begin: Alignment.topCenter,
+                                      end: Alignment.bottomCenter,
                                     ),
                                   ),
-                                ),
-                                linearGradient: LinearGradient(colors: [
-                                  AppColors.gradient1Color,AppColors.gradient2Color
-                                ],
-                                ),
-                                circularStrokeCap: CircularStrokeCap.round,
-                                backgroundColor: AppColors.nonProgressColor,
-                                //  progressColor: AppColors.nonProgressColor,
-                              )
-                            ],
+                                  footer: Padding(
+                                    padding: EdgeInsets.only(top: 5),
+                                    child: Text(
+                                      "3 Sessions left",
+                                      style:TextStyle(
+                                          color: AppColors.progressbottomColor,
+                                          fontFamily: 'Inter',
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 10
+                                      ),
+                                    ),
+                                  ),
+                                  linearGradient: LinearGradient(colors: [
+                                    AppColors.gradient1Color,AppColors.gradient2Color
+                                  ],
+                                  ),
+                                  circularStrokeCap: CircularStrokeCap.round,
+                                  backgroundColor: AppColors.nonProgressColor,
+                                  //  progressColor: AppColors.nonProgressColor,
+                                )
+                              ],
+                            ),
                           ),
                         )
                       ],
