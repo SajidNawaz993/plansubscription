@@ -25,7 +25,7 @@ class PlansDetailsIconBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var newDate = new DateTime(today.year, today.month + 1, today.day);
+    var newDate = (plans.packageType ?? "") == "MONTHLY" ? new DateTime(today.year, today.month + 1, today.day):new DateTime(today.year+1, today.month, today.day);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -207,7 +207,7 @@ class PlansDetailsIconBox extends StatelessWidget {
                   Flexible(child: Text(
                     "Only ${NumberFormat.simpleCurrency(
                       name: plans.product?.currencyCode ?? "", //currencyCode
-                    ).format(plans.product?.price ?? 0)} + tax/month after 1 month trial",
+                    ).format(plans.product?.price ?? 0)} + tax${(plans.packageType ?? "") == "MONTHLY" ? "/month":"/annual"} after 1 month trial",
                     style: TextStyle(
                         fontFamily: 'Inter',
                         fontWeight: FontWeight.w500,
