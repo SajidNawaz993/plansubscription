@@ -1,6 +1,8 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:plansubscription/common/vertical_space.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../core/config/colors.dart';
 import '../features/plans/data/plans_List_model.dart';
 import 'gradient_text.dart';
@@ -261,6 +263,9 @@ class PlansDetailsIconBox extends StatelessWidget {
                           children: <TextSpan>[
                             TextSpan(
                                 text: 'Offer terms',
+                            recognizer: new TapGestureRecognizer()..onTap = () {
+                              launch('http://google.com/');
+                            },
                                 style: TextStyle(
                                     decoration: TextDecoration.underline,
                                     fontFamily: 'Inter',
