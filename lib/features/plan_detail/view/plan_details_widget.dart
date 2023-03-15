@@ -373,7 +373,7 @@ class _PlanDetailsViewState extends State<PlanDetailsWidget> {
                           const VerticalSpace(smallSpace),
                           Center(child: InkWell(
                             onTap: (){
-                              
+
                             },
                             child: Text(
                               "Cancel",

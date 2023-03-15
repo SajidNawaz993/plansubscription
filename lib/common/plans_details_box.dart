@@ -20,7 +20,6 @@ class PlansDetailsIconBox extends StatelessWidget {
   final Color backgroundColor;
   final bool isSelected;
 
-  final dateFormat = new DateFormat('MMMM dd,yyyy');
    var today = DateTime.now();
 
 
@@ -183,7 +182,7 @@ class PlansDetailsIconBox extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "${dateFormat.format(newDate)}",
+                        "${format(newDate)}",
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w600,
@@ -230,7 +229,7 @@ class PlansDetailsIconBox extends StatelessWidget {
                       ),
                       HorizontalSpace(5),
                       Flexible(child: Text(
-                        "You won’t be charged until Apr 25,2022.",
+                        "You won’t be charged until ${format(newDate)}.",
                         style: TextStyle(
                             fontFamily: 'Inter',
                             fontWeight: FontWeight.w500,
@@ -350,5 +349,13 @@ class PlansDetailsIconBox extends StatelessWidget {
       ),
     );
   }
+   format(DateTime date) {
+     var suffix = "th";
+     var digit = date.day % 10;
+     if ((digit > 0 && digit < 4) && (date.day < 11 || date.day > 13)) {
+       suffix = ["st", "nd", "rd"][digit - 1];
+     }
+     return new DateFormat("MMMM d'$suffix', yyyy").format(date);
+   }
 }
 //Wrap widget for fill horizontal then vertical
