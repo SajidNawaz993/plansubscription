@@ -27,7 +27,7 @@ class PlansDetailsIconBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var newDate = (plans.packageType ?? "") == "MONTHLY" ? new DateTime(today.year, today.month + 1, today.day):new DateTime(today.year+1, today.month, today.day);
+    var newDate = new DateTime(today.year, today.month + 1, today.day);
     return InkWell(
       onTap: onTap,
       child: Container(
@@ -83,6 +83,7 @@ class PlansDetailsIconBox extends StatelessWidget {
                       ),
                     ): Container(),
                     HorizontalSpace(10),
+                    (plans.product?.price ?? 0) == 0 ? SizedBox.shrink():
                     Row(
                       children: [
                         GradientText(

@@ -79,6 +79,7 @@ class PlansIconBox extends StatelessWidget {
                       ),
                     ): Container(),
                     HorizontalSpace(10),
+                    (plans.product?.price ?? 0) == 0 ? SizedBox.shrink():
                     Row(
                       children: [
                         GradientText(
